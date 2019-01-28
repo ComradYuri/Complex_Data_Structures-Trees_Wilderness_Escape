@@ -12,16 +12,24 @@ class TreeNode:
 
     # initiates story from root. Takes input to traverse story lines
     def traverse(self):
+        # sets init value to story node
         story_node = self
+        # prints variable story piece from self. Which is the starting/root story in this case
         print(story_node.story_piece)
+        # iterates through list of choices until empty
         while len(story_node.choices) > 0:
             choice = input("Enter 1 or 2 to continue the story: ")
+            # checks if input is valid. If input is not valid it starts again at the top of the while loop
             if choice not in ['1', '2']:
                 print('Enter a valid choice. 1 or 2.')
+            # in this case the input is valid
             else:
+                # index numbers are 0 and 1. Choices are 1 and 2. This corrects for that
                 chosen_index = int(choice) - 1
+                # this inputs index into new variable chosen child
                 chosen_child = story_node.choices[chosen_index]
                 print(chosen_child.story_piece)
+                # shifts tree one level/branch down. Which shortens the choices list
                 story_node = chosen_child
 
 
